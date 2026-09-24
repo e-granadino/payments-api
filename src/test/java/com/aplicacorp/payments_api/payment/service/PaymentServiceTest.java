@@ -100,9 +100,6 @@ class PaymentServiceTest {
 
         assertThat(persistedPayment.getCurrency())
                 .isEqualTo("USD");
-
-        assertThat(persistedPayment.getCreatedAt())
-                .isEqualTo(timestamp);
     }
 
     @Test

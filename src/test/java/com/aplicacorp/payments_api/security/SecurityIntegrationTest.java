@@ -38,16 +38,20 @@ class SecurityIntegrationTest {
     void shouldAllowAuthenticatedRequest() throws Exception {
         mockMvc.perform(
                         get("/api/v1/payments")
+                                .param("customerId", "CUS-003")
+                                .param("from", "2026-09-01T00:00:00Z")
+                                .param("to", "2026-09-23T23:59:59Z")
                 )
                 .andExpect(status().isOk());
     }
 
     @Test
     void shouldAllowRequestWithValidBasicCredentials() throws Exception {
-        mockMvc.perform(
-                        get("/api/v1/payments")
-                                .with(httpBasic("test-user", "test-password"))
-                )
+        mockMvc.perform(get("/api/v1/payments")
+                        .param("customerId", "CUS-003")
+                        .param("from", "2026-09-01T00:00:00Z")
+                        .param("to", "2026-09-23T23:59:59Z")
+                        .with(httpBasic("test-user", "test-password")))
                 .andExpect(status().isOk());
     }
 

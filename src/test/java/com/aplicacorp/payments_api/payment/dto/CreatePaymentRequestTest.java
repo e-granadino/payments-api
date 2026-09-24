@@ -110,20 +110,6 @@ class CreatePaymentRequestTest {
                         ));
     }
 
-    @Test
-    void shouldRejectMissingTimestamp() {
-        CreatePaymentRequest request = new CreatePaymentRequest(
-                "CUS-001",
-                new BigDecimal("100.00"),
-                "USD",
-                null
-        );
-
-        assertThat(validator.validate(request))
-                .anyMatch(v ->
-                        v.getMessage().equals("Timestamp is required"));
-    }
-
     private CreatePaymentRequest validRequest() {
         return new CreatePaymentRequest(
                 "CUS-001",

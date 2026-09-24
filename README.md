@@ -289,22 +289,7 @@ Username: payment-user
 Password: payment-password
 ```
 
-They are configurable through environment variables:
-
-``` properties
-spring.security.user.name=${API_USERNAME:payment-user}
-spring.security.user.password=${API_PASSWORD:payment-password}
-spring.security.user.roles=USER
-```
-
-For example, PowerShell:
-
-``` powershell
-$env:API_USERNAME="my-user"
-$env:API_PASSWORD="my-password"
-```
-
-The default values are intended only for local development and testing
+These values are intended only for local development and testing
 and should not be used as production credentials.
 
 ------------------------------------------------------------------------
@@ -368,7 +353,7 @@ owner.
 Hibernate uses:
 
 ``` properties
-spring.jpa.properties.hibernate.default_schema=${DB_SCHEMA:ORG_BDO}
+spring.jpa.properties.hibernate.default_schema=ORG_BDO
 ```
 
 The schema can therefore be overridden without changing application
@@ -887,15 +872,12 @@ The database schema is explicitly defined by SQL scripts. Hibernate
 should validate the schema rather than silently create or modify
 database objects.
 
-## Why keep Docker Compose and Testcontainers?
+## Why keep Docker Compose?
 
 They serve different purposes.
 
 Docker Compose provides a convenient persistent Oracle instance for
 local development.
-
-Testcontainers provides isolated and reproducible database
-infrastructure for automated integration tests.
 
 ## Transaction and external integration consideration
 

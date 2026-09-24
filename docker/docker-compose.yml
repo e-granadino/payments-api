@@ -1,0 +1,17 @@
+name: payments-api-db
+
+services:
+  oracle-db:
+    image: container-registry.oracle.com/database/free:latest
+    container_name: oracle-free
+    ports:
+      - "1521:1521"
+      - "5500:5500"
+    environment:
+      ORACLE_PWD: Oracle_Dev
+    volumes:
+      - oracle-data:/opt/oracle/oradata
+      - ../database:/opt/oracle/scripts/startup
+
+volumes:
+  oracle-data:

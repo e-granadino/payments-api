@@ -40,7 +40,7 @@ public record PaymentResponse(
 
         @Schema(
                 description = "Payment createdAt",
-                example = "2026-09-24T15:00:00Z"
+                example = "2026-09-19T15:00:00Z"
         )
         Instant createdAt
 ) { }
